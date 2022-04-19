@@ -8,6 +8,7 @@ function Radiobut(props) {
         id={props.id}
       />
       <label
+        onClick={props.Onclick}
         className={`btn btn-${props.color || "outline-primary"} shadow-none`}
         htmlFor={props.id}
       >

@@ -1,14 +1,18 @@
 import Todo from "./todo.js";
 
-function Lists() {
+function Lists(props) {
+  console.log(props.tololist);
   return (
     <div>
       <ul className="list-group mt-4">
-        <li class="list-group-item">Morbi leo risus</li>
+        {props.tololist.map((el) => (
+          <Todo key={el.id} title={el.title} completed={el.completed} />
+        ))}
+        {/* <li className="list-group-item">Morbi leo risus</li>
         <Todo title="Hola" completed={true} />
         <Todo title="Nages" completed={false} />
         <Todo title="ฆwr242sวย" completed={true} />
-        <Todo title="ครุม" completed={true} />
+        <Todo title="ครุม" completed={true} /> */}
       </ul>
     </div>
   );

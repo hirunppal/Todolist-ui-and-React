@@ -1,25 +1,31 @@
 import Button from "./Ui/Button";
+import { useState } from "react";
 
-function TodoInput() {
-  //React Fragment
-  function CheckshowInpValue() {}
+function TodoInput(props) {
+  //   function CheckshowInpValue() {}
+  const [todoTextINP, SettodoTextINP] = useState("");
+  console.log(todoTextINP);
+
   return (
+    //React Fragment
     <>
       <div className="input-group shadow">
         <input
           type="text"
           className="form-control "
           placeholder="Enter new todo"
-          onChange={(event) => event.target.value}
+          value={todoTextINP}
+          onChange={(event) => SettodoTextINP(event.target.value)}
         />
-        <Button color="success">
+        <Button onClick={() => props.createTodo(todoTextINP)} color="success">
           <i
-            onClick={(event) => CheckshowInpValue()}
+            // onClick={() => props.createTodo(todoTextINP)}
+
             className="fa-solid fa-plus"
           ></i>
         </Button>
 
-        <Button color="outline-secondary">
+        <Button onClick={() => SettodoTextINP("")} color="outline-secondary">
           <i className="fa-solid fa-xmark"></i>
         </Button>
       </div>
