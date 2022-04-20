@@ -5,7 +5,7 @@ import FilterStat from "./FilterStat";
 function Filter() {
   return (
     <div>
-      <div className="btn-group">
+      <div className="btn-group mt-4">
         <Filsearch />
         <FilterStat />
       </div>

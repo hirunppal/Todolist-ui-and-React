@@ -22,8 +22,11 @@ function TodoInput(props) {
           onClick={() => {
             if (!todoTextINP) {
               SettodoEror("Title is Required");
+            } else {
+              props.createTodo(todoTextINP);
+              SettodoTextINP("");
+              SettodoEror("");
             }
-            props.createTodo(todoTextINP);
           }}
           color="success"
         >
