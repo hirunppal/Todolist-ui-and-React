@@ -4,6 +4,7 @@ import { useState } from "react";
 function TodoInput(props) {
   //   function CheckshowInpValue() {}
   const [todoTextINP, SettodoTextINP] = useState("");
+  const [todoEror, SettodoEror] = useState("");
   console.log(todoTextINP);
 
   return (
@@ -12,12 +13,20 @@ function TodoInput(props) {
       <div className="input-group shadow">
         <input
           type="text"
-          className="form-control "
+          className={`form-control ${todoEror ? "is-invalid" : ""}`}
           placeholder="Enter new todo"
           value={todoTextINP}
           onChange={(event) => SettodoTextINP(event.target.value)}
         />
-        <Button onClick={() => props.createTodo(todoTextINP)} color="success">
+        <Button
+          onClick={() => {
+            if (!todoTextINP) {
+              SettodoEror("Title is Required");
+            }
+            props.createTodo(todoTextINP);
+          }}
+          color="success"
+        >
           <i
             // onClick={() => props.createTodo(todoTextINP)}
 
@@ -29,7 +38,7 @@ function TodoInput(props) {
           <i className="fa-solid fa-xmark"></i>
         </Button>
       </div>
-      <small className="text-danger"> Title is Require</small>
+      {todoEror && <small className="text-danger"> {todoEror}</small>}
     </>
   );
 }

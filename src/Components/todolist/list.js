@@ -6,7 +6,14 @@ function Lists(props) {
     <div>
       <ul className="list-group mt-4">
         {props.tololist.map((el) => (
-          <Todo key={el.id} title={el.title} completed={el.completed} />
+          <Todo
+            deleteTodo={props.deleteTodo}
+            tololist={props.tololist}
+            key={el.id}
+            title={el.title}
+            completed={el.completed}
+            id={el.id}
+          />
         ))}
         {/* <li className="list-group-item">Morbi leo risus</li>
         <Todo title="Hola" completed={true} />

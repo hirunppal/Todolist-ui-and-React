@@ -17,6 +17,7 @@ const initialtodo = [
 
 function App() {
   const [tololist, Settodolist] = useState(initialtodo);
+
   // console.log(initialtodo);
   // สร้าง list todo ใหม่
   const createTodo = function (newtitle) {
@@ -26,6 +27,25 @@ function App() {
     Settodolist(clonetodolistForAdd);
     console.log(clonetodolistForAdd);
   };
+  //ลบ todo
+  const deleteTodo = function (idTodl) {
+    const clonetodolistForDl = [...tololist];
+    //search for index from ID
+    let tarIDX = 0;
+    clonetodolistForDl.forEach((el, index) => {
+      if (el.id == idTodl) {
+        return (tarIDX = index);
+      }
+      console.log("delete Index" + tarIDX);
+    });
+    clonetodolistForDl.splice(tarIDX, 1);
+
+    // clonetodolistForDl.shift();
+
+    Settodolist(clonetodolistForDl);
+    // console.log(clonetodolistForDl);
+  };
+
   // Reset ข้อมูล Text
   // const clearValueinINP = function () {
   //   Settodolist("");
@@ -37,7 +57,7 @@ function App() {
       <TodoInput createTodo={createTodo} />
       <Filter />
       <Pagelim />
-      <Lists tololist={tololist} />
+      <Lists tololist={tololist} deleteTodo={deleteTodo} />
       <Peginate />
     </div>
     // </ThemeContext.Provider>
